@@ -19,7 +19,7 @@ model = Blip2ForConditionalGeneration.from_pretrained(
 # The caption_image functionality is the heart of this script. It gets triggered whenever an image is uploaded to the bot.
 async def caption_image(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # First we fetch the image 
-    new_file = await context.bot.get_file(update.message.photo[-1].file_id) # Telegram stores the photo in multiplt sizes, we fetch the last (largest) one
+    new_file = await context.bot.get_file(update.message.photo[-1].file_id) # Telegram stores the photo in multiple sizes, we fetch the last (largest) one
     photo_bytes = BytesIO()
     await new_file.download_to_memory(photo_bytes)
     photo_bytes.seek(0)
@@ -58,7 +58,7 @@ async def unknown(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, I didn't understand that command. Please type '/help' (without quotes) to get help about usage.")
 
 # This is where your telegram token goes
-TELEGRAM_BOT_TOKEN = "8587542653:AAFq2lvzROnhqoCnSSz3B2bnCWg0kzhG3MU"
+TELEGRAM_BOT_TOKEN = "PUT-YOUR-TELEGRAM-BOT-ACCESS-TOKEN-HERE"
 
 # The application is created and the appropriate handlers (functions) are registered to it.
 if __name__ == '__main__':
